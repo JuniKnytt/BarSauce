@@ -16,5 +16,5 @@ def barcodeDecoder(image):
         print(obj.data)
         print(obj.type)
 
-image = "barcode.jpg"
+image = "qrcode.jpg"
 barcodeDecoder(image)

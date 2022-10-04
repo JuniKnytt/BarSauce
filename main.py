@@ -18,3 +18,4 @@ def barcodeDecoder(image):
 
 image = "qrcode.jpg"
 barcodeDecoder(image)
+#nothing

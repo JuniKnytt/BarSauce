@@ -3,10 +3,20 @@ import numpy as np
 from pyzbar.pyzbar import decode
 from PIL import Image
 
+def imageCapture():                     #captures the frames from the video streaming
+    vid = cv2.VideoCapture(1)           #set as 0 for integrated webcam 1 for USB webcam
+    while True:
+        ret, frame = vid.read()
+        barcodeDecoder(frame)
+        cv2.imshow('Image', frame)
+        code = cv2.waitKey(10)
+        if code == ord('q'):
+            break
+
 def barcodeDecoder(image):
 
-    img = cv2.imread(image)             #reads the image in numpy array
-    barcodes = decode(img)              #decodes barcode 
+    #img = cv2.imread(image)             #reads the image in numpy array
+    barcodes = decode(image)              #decodes barcode 
     for obj in barcodes:       
 
         (x, y, w, h) = obj.rect         #locating barcode in image
@@ -16,6 +26,6 @@ def barcodeDecoder(image):
         print(obj.data)
         print(obj.type)
 
-image = "qrcode.jpg"
-barcodeDecoder(image)
-#nothing
+imageCapture()
+#image = "barcode2.jpg"
+#barcodeDecoder(image)
